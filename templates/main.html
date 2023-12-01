@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hamma maqolalar</title>
+</head>
+<body>
+<h1>{{user}}</h1>
+<h2><a href="/logout/">Logout</a></h2>
+<hr>
+<form method="post">{% csrf_token %}
+    <label for="sarlavha">Sarlavha: </label>
+    <input type="text" id="sarlavha" name="sarlavha"><br>
+
+    <label for="sana">Sana: </label>
+    <input type="date" id="sana" name="sana"><br>
+
+    <label for="mavzu">Mavzu: </label>
+    <input type="text" id="mavzu" name="mavzu"><br>
+
+    <label for="matn">Matn: </label>
+    <input type="text" id="matn" name="matn"><br>
+    <button type="submit">Qo'shmoq</button>
+</form>
+
+<hr>
+<ul>
+    {% for maqola in maqolalar %}
+    <li>
+        <a href="/maqola/{{maqola.id}}/"><input type="text" value="{{maqola.sarlavha}}"></a><br>
+        <input type="text" value="{{maqola.sana}}"><br>
+        <input type="text" value="{{maqola.mavzu}}"><br>
+        <input type="text" value="{{maqola.matn}}"><br>
+        {% endfor %}
+    </li>
+</ul>
+
+</body>
+</html>
